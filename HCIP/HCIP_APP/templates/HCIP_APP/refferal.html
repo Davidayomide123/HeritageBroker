@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="{% static 'css/ref.css' %}">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>Heritage crypto investment platform</title>
+         <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '5742e3415de56c0da266c572b15f1e24bac41bbb';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)}; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+        
+    </head>
+    <body>
+        <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+        <div class="container_x">
+             <div class="back-arrow" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <h1>HCIP Referral Link</h1>
+        <div class="referral-container">
+            <input type="text" id="referral-link" readonly>
+            <button onclick="copyReferralLink()">Copy Link</button>
+        </div>
+        <div id="alert-message" class="alert-message">Copied to clipboard!</div>
+    </div>
+    
+     <div class="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </div>
+    
+    <nav class="bottom-navbar">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="text">Home</span>
+        </a>
+        <a href="{% url 'investment' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+            <span class="text">Investments</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span class="text">Reports</span>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+            
+            <script type="text/javascript" charset="utf-8">
+                // script.js
+
+// Function to generate a random referral code
+function generateReferralCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < 10; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+// Function to set the referral link in the input field
+function setReferralLink() {
+    const referralLink = `https://example.com/referral?code=${generateReferralCode()}`;
+    document.getElementById('referral-link').value = referralLink;
+}
+
+// Function to copy the referral link to the clipboard
+function copyReferralLink() {
+    const referralLink = document.getElementById('referral-link');
+    referralLink.select();
+    referralLink.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(referralLink.value).then(() => {
+        showAlertMessage();
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
+}
+
+// Function to show the alert message
+function showAlertMessage() {
+    const alertMessage = document.getElementById('alert-message');
+    alertMessage.style.display = 'block';
+    setTimeout(() => {
+        alertMessage.style.display = 'none';
+    }, 2000); // Hide after 2 seconds
+}
+
+// Set the referral link on page load
+document.addEventListener('DOMContentLoaded', setReferralLink);
+
+  // script.js
+function goBack() {
+    window.history.back();
+}
+
+            </script>
+    </body>
+</html>

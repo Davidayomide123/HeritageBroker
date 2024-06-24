@@ -1,0 +1,432 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Crypto Investment Platform</title>
+    <link rel="stylesheet" href="{% static 'css/deposit.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '5742e3415de56c0da266c572b15f1e24bac41bbb';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)}; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+</head>
+<body class="light-theme">
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div id="menu-toggle" class="menu-toggle">
+                &#9776;
+            </div>
+            <h1>Investment</h1>
+        </header>
+
+        <div class="outer-div">
+            <div class="inner-div">
+                <div class="percentage-left">
+                    Investment Percentage
+                </div>
+                <div class="percentage-right" id="percentage">
+                    0%
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+
+            <br /><br />
+
+        </div>
+        <div class="container">
+            <div class="box" onclick="handleClick(this)">
+                <div class="amount">
+                    ${{user_profile.amount}}
+                </div>
+                <hr>
+                <div class="label">
+                    Deposit
+                </div>
+            </div>
+            <div class="box" onclick="handleClick(this)">
+                <div class="amount">
+                    ${{user_profile.profit}}
+                </div>
+                <hr>
+                <div class="label">
+                    Investment
+                </div>
+            </div>
+            <div class="box" onclick="handleClick(this)">
+                <div class="amount">
+                    $0.00
+                </div>
+                <hr>
+                <div class="label">
+                    Withdraw
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="bitcoin-container">
+            <div class="bitcoin-info">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo" class="bitcoin-logo">
+                <span class="bitcoin-text">Bitcoin</span>
+            </div>
+            <div class="bitcoin-price-info">
+                <span class="bitcoin-price" id="bitcoin-price">$0.00</span>
+                <span class="bitcoin-percentage" id="bitcoin-percentage">(0.00%)</span>
+            </div>
+        </div>
+        <br />
+
+        <div class="containery">
+            <a href="{% url 'copy_trade' %}">
+                <div class="boxy">
+                <div class="icon-container">
+                    <i class="fa fa-chart-line"></i>
+                </div>
+                <p>
+                    Copy Trading
+                </p>
+            </div>
+            </a>
+           <a href="{% url 'signals' %}">
+                <div class="boxy">
+                <div class="icon-container">
+                    <i class="fa fa-signal"></i>
+                </div>
+                <p>
+                    Signal Trading
+                </p>
+            </div>
+           </a>
+        </div>
+        <br />
+
+        <h1 id="investment">Investment plans</h1>
+
+        <div class="plans">
+            <a href="{% url 'basic' %}">
+                <div class="transparent-box">
+                <div class="flex1">
+                    <span class="text-left">Basic</span>
+                    <span class="icon-right">
+                        <i class="fa fa-cog"></i>
+                    </span>
+                </div>
+                <div class="flex1">
+                    <span class="icon-right">
+                        $1000
+                    </span>
+                    <span class="icon-right">
+                        $3000
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="icon-r">
+                        min
+                    </span>
+                    <span class="icon-r">
+                        max
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="in">
+                        Duration:
+                    </span>
+                    <span class="icon-right">
+                        7 <span class="in">Days</span>
+                    </span>
+                </div>
+                <br />
+                <p class="orange-text">
+                    Principal return after completion
+                </p>
+                <br />
+                <div class="btn">
+                    Purchase plan
+                </div>
+            </div>
+
+            </a>
+            
+     <a href="{% url 'standard' %}">
+            <div class="transparent-box">
+                <div class="flex1">
+                    <span class="text-left">Standard</span>
+                    <span class="icon-right">
+                        <i class="fa fa-cog"></i>
+                    </span>
+                </div>
+                <div class="flex1">
+                    <span class="icon-right">
+                        $5000
+                    </span>
+                    <span class="icon-right">
+                        $10,000
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="icon-r">
+                        min
+                    </span>
+                    <span class="icon-r">
+                        max
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="in">
+                        Duration:
+                    </span>
+                    <span class="icon-right">
+                        7 <span class="in">Days</span>
+                    </span>
+                </div>
+                <br />
+                <p class="orange-text">
+                    Principal return after completion
+                </p>
+                <br />
+                <div class="btn">
+                    Purchase plan
+                </div>
+            </div>
+</a>
+        </div>
+        <br />
+
+        <div class="plans">
+            <a href="{% url 'premium' %}">
+                <div class="transparent-box">
+                <div class="flex1">
+                    <span class="text-left">Premium</span>
+                    <span class="icon-right">
+                        <i class="fa fa-cog"></i>
+                    </span>
+                </div>
+                <div class="flex1">
+                    <span class="icon-right">
+                        $15,000
+                    </span>
+                    <span class="icon-right">
+                        $25,000
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="icon-r">
+                        min
+                    </span>
+                    <span class="icon-r">
+                        max
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="in">
+                        Duration:
+                    </span>
+                    <span class="icon-right">
+                        14 <span class="in">Days</span>
+                    </span>
+                </div>
+                <br />
+                <p class="orange-text">
+                    Principal return after completation
+                </p>
+                <br />
+                <div class="btn">
+                    Purchase plan
+                </div>
+            </div>
+            </a>
+
+           <a href="{% url 'ultimate' %}">
+                <div class="transparent-box">
+                <div class="flex1">
+                    <span class="text-left">Ultimate</span>
+                    <span class="icon-right">
+                        <i class="fa fa-cog"></i>
+                    </span>
+                </div>
+                <div class="flex1">
+                    <span class="icon-right">
+                        $50k
+                    </span>
+                    <span class="icon-right">
+                        $100k
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="icon-r">
+                        min
+                    </span>
+                    <span class="icon-r">
+                        max
+                    </span>
+                </div>
+
+                <div class="flex1">
+                    <span class="in">
+                        Duration:
+                    </span>
+                    <span class="icon-right">
+                        27 <span class="in">Days</span>
+                    </span>
+                </div>
+                <br />
+                <p class="orange-text">
+                    Principal return after completation
+                </p>
+                <br />
+                <div class="btn">
+                    Purchase plan
+                </div>
+            </div>
+           </a>
+        </div>
+<br />
+        <div class="investment-container">
+            <div class="investment-header">
+                <div>
+                    My investment
+                </div>
+                <div id="investment-count">
+                    0
+                </div>
+            </div>
+            <div class="investment-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="no-investment">
+                No investment yet
+            </div>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="sidebar" class="sidebar">
+            <button class="closebtn" id="close-btn">&times;</button>
+            <div class="logo-container">
+                <img src="{% static 'images/download.jpeg' %}" alt="Logo" class="logo">
+            </div>
+            <a href="{% url 'dashboard' %}"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'investment' %}"><i class="fas fa-chart-line"></i> Investments</a>
+            <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+            <a href="{% url 'profile' %}"><i class="fas fa-cog"></i> Settings</a>
+            <div class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle">Dark Mode</label>
+            </div>
+        </div>
+
+
+        <nav class="bottom-navbar">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="text">Home</span>
+        </a>
+        <a href="{% url 'investment' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+            <span class="text">Investments</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span class="text">Reports</span>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+
+        <div class="telegram-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        </div>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                let percentageElement = document.getElementById('percentage');
+                let progressBarElement = document.getElementById('progress-bar');
+                let percentage = 0;
+
+                const animatePercentage = () => {
+                    if (percentage <= 100) {
+                        percentageElement.textContent = `${percentage}%`;
+                        progressBarElement.style.width = `${percentage}%`;
+                        percentage++;
+                        requestAnimationFrame(animatePercentage);
+                    }
+                };
+
+                animatePercentage();
+
+                // Sidebar toggle logic
+                let sidebar = document.getElementById('sidebar');
+                let closeBtn = document.getElementById('close-btn');
+                let menuToggle = document.getElementById('menu-toggle');
+
+                closeBtn.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                });
+
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                });
+            });
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const priceElement = document.getElementById('bitcoin-price');
+                const percentageElement = document.getElementById('bitcoin-percentage');
+
+                fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+                .then(response => response.json())
+                .then(data => {
+                    const price = data.bitcoin.usd;
+                    const percentageChange = data.bitcoin.usd_24h_change.toFixed(2);
+
+                    priceElement.textContent = `$${price.toLocaleString()}`;
+                    percentageElement.textContent = `(${percentageChange}%)`;
+
+                    if (percentageChange > 0) {
+                        percentageElement.style.color = 'green';
+                    } else {
+                        percentageElement.style.color = 'red';
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+            });
+
+        </script>
+    </body>
+</html>

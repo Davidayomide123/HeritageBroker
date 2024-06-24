@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Crypto Investment Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMM8zjV9ZZx1yygffSYhv/C/hAcB9eI4f5EwW" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '5742e3415de56c0da266c572b15f1e24bac41bbb';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)}; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+</head>
+<body class="light-theme">
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div id="menu-toggle" class="menu-toggle">
+                &#9776;
+            </div>
+            <img class="h1" src="{% static 'images/lolo.jpg' %}" alt="" />
+        </header>
+        {% if messages %}
+        <div class="messages-container">
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="account-info">
+            <img src="{% static 'images/icon.png' %}" alt="Profile Picture" class="profile-pic">
+            <div class="user-details">
+                <p class="user-name">
+                    <i class="fas fa-user"></i> {{request.user}}
+                </p>
+                <p class="account-balance">
+                    Balance: ${{user_profile.amount}}
+                </p>
+                <p class="account-balance">
+                    Profit: ${{user_profile.profit}}
+                </p>
+            </div>
+            <a href="{% url 'notification' %}">
+                <div class="notification-icon">
+                    &#128276;
+                </div>
+            </a>
+        </div>
+
+        <a href="{% url 'deposit' %}">
+            <div class="action-buttons">
+                <div class="action-button">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Deposit</span>
+                </div>
+            </a>
+            <a href="{% url 'withdrawal' %}">
+                <div class="action-button">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Withdraw</span>
+                </div>
+            </a>
+            <a href="{% url 'copy_trade' %}">
+                <div class="action-button">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Trade</span>
+                </div>
+            </a>
+            <a href="copy_trade">
+                <div class="action-button">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Upgrade</span>
+                </div>
+            </div>
+        </a>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h2>Total Investment</h2>
+                <p id="total-investment">
+                    ${{user_profile.profit}}
+                </p>
+            </div>
+            <div class="stat-card">
+                <h2>Proposed deposit</h2>
+                <p id="total-returns">
+                    ${{user_profile.proposed_amount}}
+                </p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="investment-chart"></canvas>
+        </div>
+
+        <div class="container_cu">
+            <div id="header" class="header">
+                Crypto Currency Table
+            </div>
+        </div>
+        <table id="crypto-table">
+            <tr>
+                <th>Symbol</th>
+                <th>Price (USD)</th>
+                <th>Market Cap (USD)</th>
+                <th>24h Change (%)</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="verification-">
+        <i class="fas fa-user-check verification-icon"></i>
+        <div class="verification-text">
+            <p>
+                <strong>Verify your account</strong>
+            </p>
+            <p>
+                We need to know you, so you can access all of our features and help us keep your funds safe.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="fund-invest">
+        <a href="{% url 'deposit' %}">
+            <div class="fund-account">
+                <i class="fas fa-wallet"></i>
+                <h3>Fund Account</h3>
+                <p>
+                    Add money to your account to start investing.
+                </p>
+            </a>
+        </div>
+
+        <div class="start-investing">
+            <a href="{% url 'investment' %}">
+                <i class="fas fa-play"></i>
+            <h3>Start Investing</h3>
+            <p>
+                Begin your investment journey with us.
+            </p>
+        </div>
+            </a>
+    </div>
+
+    <div class="additional-features">
+       <a href="{% url 'notification' %}">
+            <div class="saving-records">
+            <i class="fas fa-piggy-bank"></i>
+            <h3>Saving Records</h3>
+            <p>
+                Keep track of your savings over time.
+            </p>
+       </a>
+        </div>
+       
+            <div class="expense-tracking">
+                 <a href="{% url 'notification' %}">
+            <i class="fas fa-receipt"></i>
+            <h3>Expense Tracking</h3>
+            <p>
+                Monitor and manage your expenses efficiently.
+            </p>
+            </a>
+        </div>
+        
+    </div>
+
+    <div class="verify-info">
+        <div class="verify-icon">
+            &#10004;
+        </div>
+        <div class="refer-earn">
+            <h3>Refer &amp; Earn</h3>
+            <p>
+                You get the chance to earn more by inviting your friends and family to join you make wealth.
+            </p>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" id="close-btn">&times;</a>
+        <div class="logo-container">
+            <img src="{% static 'images/download.jpeg' %}" alt="Logo" class="logo">
+        </div>
+        <a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a>
+        <a href="{% url 'investment' %}"><i class="fas fa-chart-line"></i> Investments</a>
+        <a href="{% url 'investment' %}"><i class="fas fa-file-alt"></i> Reports</a>
+        <a href="{% url 'profile' %}"><i class="fas fa-cog"></i> Settings</a>
+        <a href="{% url 'LogoutPage' %}"><i class="fas fa-cog"></i> Logout</a>
+    </div>
+
+    <nav class="bottom-navbar">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="text">Home</span>
+        </a>
+        <a href="{% url 'investment' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+            <span class="text">Investments</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span class="text">Reports</span>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+    <div class="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </div>
+    <script src="{% static 'js/script.js' %}" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

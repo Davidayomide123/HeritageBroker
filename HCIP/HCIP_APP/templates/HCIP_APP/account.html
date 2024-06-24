@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Crypto Investment Platform</title>
+    <link rel="stylesheet" href="{% static 'css/setting.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '5742e3415de56c0da266c572b15f1e24bac41bbb';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)}; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+</head>
+<body class="light-theme">
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <h1>Profile</h1>
+        </header> 
+        
+        <div class="form-container">
+        <div class="back-arrow" onclick="goBack()">&#8592;</div>
+        <br /><br /><br />
+        <form id="contact-form">
+            <div class="form-group">
+                <input type="text" id="full-name" name="full-name" required>
+                <label for="full-name">Full Name</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="telephone" name="telephone" required>
+                <label for="telephone">Telephone</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+  
+    <br /><br />
+<div id="mn">
+            <button id="menu-toggl">Log out</button>
+        </div>
+    </div>
+    <nav class="bottom-navbar">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="text">Home</span>
+        </a>
+        <a href="{% url 'investment' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+            <span class="text">Investments</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span class="text">Reports</span>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+    <div class="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </div>
+
+    <script>
+function goBack() {
+    alert('Back arrow clicked! Implement your back navigation here.');
+}
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Form submitted!');
+});
+
+
+    </script>
+</body>
+</html>

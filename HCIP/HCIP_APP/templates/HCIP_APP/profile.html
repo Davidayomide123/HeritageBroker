@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Crypto Investment Platform</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '5742e3415de56c0da266c572b15f1e24bac41bbb';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)}; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+</head>
+<body class="light-theme">
+    <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <h1>Profile</h1>
+        </header>
+
+        <div class="account-info">
+            <img src="{% static 'images/icon.png' %}" alt="Profile Picture" class="profile-pic">
+            <div class="user-details">
+                <p class="user-name">
+                    <i class="fas fa-user"></i> {{request.user}}
+                </p>
+                <p class="account-balance">
+                    Balance: ${{user_profile.amount}}
+                </p>
+            </div>
+<a href="{% url 'notification' %}">
+    <div class="notification-icon">
+        &#128276;
+    </div>
+</a>
+        </div>
+
+        <div class="profile-card">
+            <div class="logo">
+                <img src="{% static 'images/icon.png' %}" alt="Logo">
+            </div>
+            <div class="info">
+                <div class="name">{{request.user}}</div>
+                <div class="email">{{request.user.email}}</div>
+                <div class="status">Beginner account</div>
+            </div>
+        </div>
+
+        <div class="settings-container">
+            <h1>General settings</h1>
+
+            <a href="{% url 'nok' %}">
+                <div class="setting-item" onclick="location.href='nok.html'">
+                    <span class="setting-text">Next of Kin</span>
+                    <span class="setting-arrow"><i class="fas fa-chevron-right"></i></span>
+                </div>
+            </a>
+        </div>
+
+        <div class="settings-container">
+            <h1>Verifications</h1>
+           <a href="{% url 'kyc' %}">
+            <div class="setting-item" onclick="location.href='kyc.html'">
+                <span class="setting-text">Level 0</span>
+                <span class="setting-arrow"><i class="fas fa-chevron-right"></i></span>
+            </div>
+           </a>
+        </div>
+
+        <div class="settings-container">
+            <h1>Exit</h1>
+           <a href="{% url 'LogoutPage' %}">
+            <div class="setting-item_red" onclick="location.href='login.html'">
+                <span class="setting-text_red">Logout</span>
+                <span class="setting-arrow"><i class="fas fa-chevron-right"></i></span>
+            </div>
+           </a>
+        </div>
+        <br /><br />
+    </div>
+
+    <nav class="bottom-navbar">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="text">Home</span>
+        </a>
+        <a href="{% url 'investment' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+            <span class="text">Investments</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span class="text">Reports</span>
+        </a>
+        <a href="{% url 'profile' %}" class="nav-item">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+
+    <div class="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notificationIcon = document.querySelector('.notification-icon');
+
+            notificationIcon.addEventListener('click', function() {
+                notificationIcon.classList.add('vibrate');
+
+                setTimeout(() => {
+                    notificationIcon.classList.remove('vibrate');
+                }, 300);
+            });
+
+            const ctx = document.getElementById('investment-chart').getContext('2d');
+
+            const investmentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Investment Growth',
+                        data: [5000, 10000, 15000, 20000, 25000, 30000, 35000],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    animation: {
+                        duration: 2000
+                    }
+                }
+            });
+
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeBtn = document.querySelector('.closebtn');
+
+            menuToggle.addEventListener('click', function() {
+                sidebar.style.width = '250px';
+            });
+
+            closeBtn.addEventListener('click', function() {
+                sidebar.style.width = '0';
+            });
+
+            const themeToggle = document.getElementById('theme-toggle');
+
+            themeToggle.addEventListener('change', function() {
+                if (themeToggle.checked) {
+                    document.body.classList.remove('light-theme');
+                    document.body.classList.add('dark-theme');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    document.body.classList.add('light-theme');
+                }
+            });
+
+            function showLoadingSpinner() {
+                document.getElementById('loading-spinner').style.display = 'flex';
+            }
+
+            function hideLoadingSpinner() {
+                document.getElementById('loading-spinner').style.display = 'none';
+            }
+
+            window.addEventListener('beforeunload', showLoadingSpinner);
+
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', showLoadingSpinner);
+            });
+
+            hideLoadingSpinner();
+        });
+    </script>
+</body>
+</html>

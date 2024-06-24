@@ -1,0 +1,1164 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top , #3d00a6, #000e17);;
+    margin: 0;
+    overflow-y: scroll;
+    /* Ensure vertical scrolling */
+    height: 280vh;
+    /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    /* Column layout to stack elements vertically */
+}
+
+a{
+            text-decoration: none;
+}
+
+body.light-theme {
+    background: linear-gradient(to top , #3d00a6, #000e17);
+    color: #000;
+}
+
+body.dark-theme {
+    background-color: #3ee3;
+    color: #000;
+}
+
+
+.h1 {
+    height: 10rem;
+}
+
+
+.messages-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    text-align: center;
+    width: 100%;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.messages li {
+    border-left: 8px solid green;
+    background-color: #000334;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: bounceup 1s infinite;
+}
+
+@keyframes bounceup {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+  
+
+.dashboard {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    /* Center the dashboard and add top/bottom margin */
+    box-sizing: border-box;
+    /* Ensure padding is included in width/height */
+}
+
+body.dark-theme .dashboard {
+    background-color: navy;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1000;
+    /* Ensure the header stays above other content */
+}
+
+
+/* styles.css */
+
+/* Adjustments to push the marquee to the top */
+
+body.light-theme .dashboard-header,
+body.dark-theme .dashboard-header {
+    z-index: 1000;
+    /* Ensure header remains above the marquee */
+}
+
+
+/* Marquee styles */
+
+.marquee-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000334;
+    padding: 5px 0;
+    /* Reduce padding */
+    box-sizing: border-box;
+    z-index: 999;
+    /* Ensure the marquee appears above other content */
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee p {
+    display: inline-block;
+    padding: 0 20px;
+    margin: 0;
+    color: white;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    color: #000334;
+    top: 10px;
+    background: none;
+    border: none;
+    z-index: 1000;
+    /* Ensure the menu toggle stays above other content */
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #000334;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.user-details {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.user-name {
+    color: #fff;
+    margin: 0;
+    font-weight: bold;
+}
+
+.account-balance {
+    margin: 0;
+    color: #f1f1f1;
+}
+
+.notification-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.header {
+    font-size: 2em;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+    color: #000334;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.container_cu {
+    background-color:#000334;
+    /* Green background */
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+.stat-card {
+    background-color:#000334;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+    background-color: #000334;
+    color: #fff;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+    /* Add margin to separate from verification info */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.stat-card,
+.chart-container {
+    animation: fadeIn 1s ease-in-out;
+}
+/* Sidebar styles */
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000334;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 60px;
+    z-index: 1001;
+    /* Ensure the sidebar appears above other content */
+}
+
+.sidebar.active {
+    width: 250px;
+    /* Adjust width as needed */
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    z-index: 1002;
+    /* Ensure the close button appears above other content */
+}
+
+.sidebar .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1002;
+    /* Ensure logo appears above other content */
+}
+
+.sidebar .logo {
+    width: 150px;
+    height: auto;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    z-index: 1002;
+    /* Ensure links appear above other content */
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.theme-switch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.theme-switch label {
+    font-size: 20px;
+    color: #818181;
+}
+
+.theme-switch input {
+    margin-right: 10px;
+}
+
+
+/* New rule to change the color of the readings to black */
+#total-investment, #total-returns {
+    color: #fff;
+}
+
+/* Keyframes for the vibration effect */
+@keyframes vibrate {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Class to apply the vibration effect */
+.vibrate {
+    animation: vibrate 0.3s linear;
+}
+
+/* To ensure the animation can be triggered again */
+.notification-icon:active {
+    animation: none;
+}
+
+/* New styles for action buttons */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:#000334;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.action-button i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.action-button:hover {
+    transform: scale(1.1);
+}
+
+/* Styles for verification info */
+/* Verification info styles */
+
+.verification- {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #000334;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 3rem;
+    /* Add margin to the bottom */
+}
+
+
+
+.verification-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.verification-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.verification-text p {
+    margin: 0;
+    color: #fff;
+}
+
+.verification-text p strong {
+    color: #fff;
+}
+
+
+/* Bottom navbar styles */
+
+.bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000334;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    /* Ensure the bottom navbar stays above other content */
+}
+
+.bottom-navbar .nav-item {
+    color: #fff;
+    text-align: center;
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.bottom-navbar .nav-item:hover {
+    color: #1e90ff;
+    transform: scale(1.1);
+}
+
+.bottom-navbar .nav-item .icon {
+    font-size: 24px;
+    display: block;
+}
+
+.bottom-navbar .nav-item .text {
+    font-size: 12px;
+}
+
+/* Additional styles for dark theme */
+
+body.dark-theme .account-info {
+    background-color: lightgreen;
+}
+
+body.dark-theme .stat-card {
+    background-color: lightgreen;
+}
+
+body.dark-theme .bottom-navbar {
+    background-color: navy;
+}
+
+body.dark-theme, .verification-info, .verify-info {
+    background-color: lightgreen;
+}
+
+body.dark-theme .action-buttons {
+    background-color: lightgreen;
+}
+
+/* Additional styles for the marquee */
+
+.marquee p:nth-child(odd) {
+    background-color: blue;
+}
+
+.marquee p:nth-child(even) {
+    background-color: navy;
+}
+
+.verify-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000334;
+    padding: 10px;
+    border: 1px solid #000334;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.verify-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.refer-earn {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.refer-earn h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.refer-earn p {
+    margin: 5px 0 0;
+    color: #fff;
+}
+
+
+.fund-invest {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.fund-account, .start-investing {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid #000334;
+    border-radius: 5px;
+    background-color: #000334;
+    color: #fff;
+    text-align: center;
+}
+
+.fund-account i, .start-investing i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.additional-features {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.saving-records, .expense-tracking {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    background-color: #000334;
+    color: #fff;
+    text-align: center;
+}
+
+.saving-records i, .expense-tracking i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* telegram design */
+
+.telegram-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0088cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: float 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 10000;
+    /* Ensure the icon stays on top of other content */
+}
+
+a{
+    color: #fff;
+}
+
+.telegram-icon img {
+    width: 70%;
+    height: 70%;
+}
+
+.telegram-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    /* Enhance hover effect */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 50px;
+    /* Adjust the size as needed */
+    height: 50px;
+    /* Adjust the size as needed */
+}
+
+.info {
+    margin-left: 10px;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.email {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.status {
+    font-size: 0.9em;
+    color: white;
+    background-color: red;
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.setting-item, .setting-item_red {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.setting-item:hover {
+    background-color: #f9f9f9;
+}
+
+.setting-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.setting-arrow {
+    font-size: 16px;
+    color: #333;
+}
+
+.setting-item_red {
+    background-color: red;
+}
+
+.setting-text_red {
+    color: white;
+}
+
+
+
+/* account */
+
+.form-container {
+    background: navy;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #007BFF;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5em;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5em 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: none;
+    outline: none;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.form-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em 0;
+    pointer-events: none;
+    transition: transform 0.3s, color 0.3s;
+    color: #666;
+}
+
+.form-group input:focus {
+    border-color: #007BFF;
+    color: #fff;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5em);
+    color: #fff;
+    font-size: 0.75em;
+}
+
+input {
+    color: #fff;
+}
+
+button {
+    padding: 0.75em 1.5em;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.gender-options {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.gender-options label {
+    position: static;
+    margin-right: 1em;
+    transform: none;
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+}
+.form-group select {
+    width: 100%;
+    padding: 0.5em 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: none;
+    outline: none;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s;
+    appearance: none;
+}
+
+.animated-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    /* Transparent background */
+    padding: 1.5em;
+    border: 2px solid navy;
+    /* Navy border */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.profile-icon {
+    flex-shrink: 0;
+    margin-right: 1em;
+    animation: bounce 2s infinite;
+    color: navy;
+    /* Navy color for the icon */
+    font-size: 50px;
+    /* Size of the icon */
+}
+
+.verification-text h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #fff;
+    /* Navy text color */
+}
+
+.verification-text p {
+    margin: 0.5em 0 0 0;
+    font-size: 1em;
+    color: #fff;
+    /* Navy text color */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.outer-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.inner-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.percentage-left {
+    font-size: 16px;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+}
+
+.percentage-right {
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: green;
+    border-radius: 5px;
+}
+
+/* CSS */
+.news-feed {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    /* Adjust width as needed */
+    position: fixed;
+    top: 20px;
+    /* Adjust position from top */
+    right: 20px;
+    /* Adjust position from right */
+}
+
+.news-feed h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.news-feed ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-feed li {
+    margin-bottom: 10px;
+}
+
+.news-feed a {
+    text-decoration: none;
+    color: #007BFF;
+    /* Adjust link color */
+}
+
+.news-feed a:hover {
+    text-decoration: underline;
+}
+
+/* styles.css */
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.dashboard,
+.marquee-container,
+.account-info,
+.stats,
+.chart-container,
+.sidebar,
+.bottom-navbar,
+.verification-info,
+.verify-info,
+.fund-invest,
+.additional-features,
+.telegram-icon,
+.loading-spinner,
+.profile-card,
+.form-container,
+.setting-item,
+.outer-div {
+    animation: bounceIn 1s ease;
+}
+
+
+@media (min-width: 768px) {
+    #laptop-sidebar, .news-feed, .bottom-navbar {
+        display: none;
+    }
+    .bottom-navbar {
+        display: none;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #000334;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+tr:nth-child(odd) {
+    background-color: #000334;
+    color: #fff;
+}
+@keyframes colorChange {
+    0% {
+        background-color: white;
+        color: #000334;
+    }
+    50% {
+        background-color: #000334;
+        color: white;
+    }
+    100% {
+        background-color: white;
+        color: #000334;
+    }
+}
+tr:nth-child(even) {
+    animation: colorChange 2s infinite;
+}
+tr:nth-child(odd) {
+    animation: colorChange 2s infinite;
+}
+
+
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Additional styles for dark/light theme and other elements */
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        padding: 12px 5px;
+        font-size: 14px;
+    }
+    tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+    tr:nth-child(even), tr:nth-child(odd) {
+        animation: none;
+    }
+    th, td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+    th::before, td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        text-align: left;
+        font-weight: bold;
+    }
+    th, td::before {
+        color: #fff;
+        background-color: transparent;
+    }
+    tr:nth-child(even)::before, tr:nth-child(odd)::before {
+        background-color: transparent;
+    }
+}

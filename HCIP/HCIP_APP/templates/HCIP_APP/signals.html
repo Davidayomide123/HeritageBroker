@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage crypto investment platform - Crypto Currency Form</title>
+    <link rel="stylesheet" href="{% static 'css/signal.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="marquee-container">
+        <div class="marquee">
+            <p>
+                <i class="fas fa-chart-line"></i> Investment Growth: $5,000 to $35,000
+            </p>
+            <p>
+                <i class="fas fa-hand-holding-usd"></i> Total Returns: $10,000
+            </p>
+        </div>
+    </div>
+
+
+    <div class="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <h1>Signals</h1>
+        </header>
+
+        <div class="container">
+            <div class="box" onclick="handleClick(this)">
+                <div class="amount">
+                    ${{user_profile.amount}}
+                </div>
+                <hr>
+                <div class="label">
+                    Deposit
+                </div>
+            </div>
+            <div class="box" onclick="handleClick(this)">
+                <div class="amount">
+                    ${{user_profile.profit}}
+                </div>
+                <hr>
+                <div class="label">
+                    Profit
+                </div>
+            </div>
+
+            <form id="crypto-form">
+                <label for="crypto-select">Choose a cryptocurrency:</label>
+                <select id="crypto-select">
+                    <option value="">Loading...</option>
+                </select>
+
+                <label for="action-select">Choose an action:</label>
+                <select id="action-select">
+                    <option value="deposit">Deposit</option>
+                    <option value="profit">Profit</option>
+                </select>
+
+                <div class="flex-container" id="hidden-fields">
+                    <div class="flex-item">
+                         <label for="time">Time</label>
+                        <input type="text" id="field1" placeholder="Number 1">
+                        <input type="hidden" id="hidden1" name="hidden1">
+                    </div>
+                    <div class="flex-item">
+                         <label for="action-select">Tick</label>
+                        <input type="text" id="field2" placeholder="Number 2">
+                        <input type="hidden" id="hidden2" name="hidden2">
+                    </div>
+                </div>
+
+                <label for="trade-amount">Trade Amount:</label>
+                <input type="text" id="trade-amount" placeholder="Enter trade amount" pattern="\d*">
+
+                <div class="profit-field" id="potential-profit">
+                    Potential Profit: $0.00 USD
+                </div>
+                <br />
+                <button type="submit">Submit</button>
+            </form>
+<br /><br />
+<nav class="bottom-navbar">
+    <a href="{% url 'dashboard' %}" class="nav-item">
+        <span class="icon"><i class="fas fa-home"></i></span>
+        <span class="text">Home</span>
+    </a>
+    <a href="{% url 'investment' %}" class="nav-item">
+        <span class="icon"><i class="fas fa-chart-line"></i></span>
+        <span class="text">Investments</span>
+    </a>
+    <a href="#" class="nav-item">
+        <span class="icon"><i class="fas fa-file-alt"></i></span>
+        <span class="text">Reports</span>
+    </a>
+    <a href="{% url 'profile' %}" class="nav-item">
+        <span class="icon"><i class="fas fa-cog"></i></span>
+        <span class="text">Settings</span>
+    </a>
+</nav>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const cryptoSelect = document.getElementById('crypto-select');
+
+                    fetch('https://api.coingecko.com/api/v3/coins/list')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear the loading option
+                        cryptoSelect.innerHTML = '<option value="">Select a cryptocurrency</option>';
+
+                        // Populate dropdown with cryptocurrencies
+                        data.forEach(coin => {
+                            const option = document.createElement('option');
+                            option.value = coin.id;
+                            option.textContent = `${coin.name} (${coin.symbol.toUpperCase()})`;
+                            cryptoSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching cryptocurrency data:', error);
+                        cryptoSelect.innerHTML = '<option value="">Failed to load</option>';
+                    });
+
+                    // Generate random numbers
+                    const randomNumber1 = Math.floor(Math.random() * 1000) + 1;
+                    const randomNumber2 = Math.floor(Math.random() * 1000) + 1;
+
+                    // Populate fields with random numbers
+                    document.getElementById('field1').placeholder = randomNumber1;
+                    document.getElementById('hidden1').value = randomNumber1;
+
+                    document.getElementById('field2').placeholder = randomNumber2;
+                    document.getElementById('hidden2').value = randomNumber2;
+
+                    // Calculate and display potential profit
+                    const potentialProfit = (Math.random() * 1000).toFixed(2);
+                    document.getElementById('potential-profit').textContent = `Potential Profit: $${potentialProfit} USD`;
+                });
+            </script>
+        </body>
+    </html>

@@ -1,0 +1,294 @@
+/* Reset and base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow-y: scroll;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background-color: navy;
+    color: #fff;
+}
+
+/* Marquee styles */
+.marquee-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000334;
+    padding: 5px 0;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee p {
+    display: inline-block;
+    padding: 0 20px;
+    margin: 0;
+    color: white;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Dashboard styles */
+.dashboard {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+/* Animated notification container */
+.animated-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1.5em;
+    border: 2px solid navy;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out, bounceIn 1s ease;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+}
+
+.profile-icon {
+    flex-shrink: 0;
+    margin-right: 1em;
+    animation: bounce 2s infinite;
+    color: navy;
+    font-size: 50px;
+}
+
+.verification-text h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: navy;
+}
+
+/* Bottom navbar styles */
+.bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000334;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.bottom-navbar .nav-item {
+    color: #fff;
+    text-align: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.bottom-navbar .nav-item:hover {
+    color: #1e90ff;
+    transform: scale(1.1);
+}
+
+.bottom-navbar .nav-item .icon {
+    font-size: 24px;
+    display: block;
+}
+
+.bottom-navbar .nav-item .text {
+    font-size: 12px;
+}
+
+/* Telegram icon */
+.telegram-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0088cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: float 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 10000;
+}
+
+.telegram-icon i {
+    color: #fff;
+    font-size: 30px;
+}
+
+.telegram-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Additional styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* General styles */
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.info {
+    margin-left: 10px;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.email {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.status {
+    font-size: 0.9em;
+    color: white;
+    background-color: red;
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.setting-item:hover {
+    background-color: #f9f9f9;
+}
+
+.setting-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.setting-arrow {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Dark theme */
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme .marquee-container {
+    background-color: #111;
+}
+
+.dark-theme .dashboard {
+    background-color: #222;
+    color: #fff;
+}
+
+.dark-theme .bottom-navbar {
+    background-color: #111;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .bottom-navbar .nav-item {
+    color: #fff;
+}
+
+.dark-theme .bottom-navbar .nav-item:hover {
+    color: #1e90ff;
+}
+
+.dark-theme .telegram-icon {
+    background-color: #0088cc;
+}
+
+.dark-theme .telegram-icon i {
+    color: #fff;
+}

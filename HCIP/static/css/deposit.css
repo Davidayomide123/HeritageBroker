@@ -1,0 +1,848 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top , #3d00a6, #000e17);
+    margin: 0;
+    overflow-y: scroll;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.light-theme {
+    background: linear-gradient(to top , #3d00a6, #000e17);
+    color: #fff;
+}
+
+body.dark-theme {
+    background-color: navy;
+    color: #000;
+}
+
+small{
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+        color: #fff;
+}
+
+h1 {
+    color: #fff;
+}
+
+.dashboard {
+    background: linear-gradient(to top , #3d00a6, #000e17);
+    padding: 20px;
+    max-width: 800px;
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+body.dark-theme .dashboard {
+    background-color: navy;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+
+.transparent-box {
+    border-radius: 5px;
+    border: 1px solid green;
+    background-color: #000;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+
+.flex1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-left {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.icon-r {
+    font-size: 15px;
+    color: grey;
+}
+
+.in {
+    font-size: 15px;
+    color: #fff;
+}
+
+.icon-right {
+    font-size: 20px;
+    color: green;
+}
+
+.orange-text {
+    color: orange;
+    font-size: 19px;
+    text-align: center;
+}
+
+
+.plans {
+    display: flex;
+    justify-items: space-between;
+    align-items: center;
+}
+
+.marquee-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000334;
+    padding: 5px 0;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.btn {
+    padding: 10px 10px;
+    border-radius: 3px;
+    background-color: #000334;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.amount {
+    color: green;
+}
+
+.box {
+    background-color: #000334;
+    border: 1px solid #009688;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: fadeIn 2s ease-in-out;
+    width: 90%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.box.clicked {
+    animation: hoverOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hoverOut {
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.box hr {
+    border: none;
+    border-top: 1px solid #009688;
+    margin: 10px 0;
+}
+
+.amount {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 16px;
+    color: #00796b;
+}
+
+body.light-theme .dashboard-header,
+body.dark-theme .dashboard-header {
+    z-index: 1000;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee p {
+    display: inline-block;
+    padding: 0 20px;
+    margin: 0;
+    color: white;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    color: #000334;
+    top: 10px;
+    background: none;
+    border: none;
+    z-index: 1000;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000334;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 60px;
+    z-index: 1001;
+}
+
+.sidebar.active {
+    width: 250px;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    background-color: #000;
+    margin-left: 50px;
+    z-index: 1002;
+    color: #fff;
+    border: none;
+}
+
+.sidebar .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1002;
+}
+
+.sidebar .logo {
+    width: 150px;
+    position: relative;
+    z-index: 1002;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .theme-switch {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.theme-switch input {
+    margin-right: 10px;
+}
+
+.bottom-navbar {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #000334;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.nav-item {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #f1f1f1;
+}
+
+.nav-item .icon {
+    display: block;
+    font-size: 24px;
+}
+
+.loading-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+}
+
+.loading-spinner .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.telegram-icon {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.telegram-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.outer-div {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #000;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.inner-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.percentage-left {
+    flex: 1;
+    text-align: left;
+    color: #fff;
+}
+
+.percentage-right {
+    flex: 1;
+    text-align: right;
+    color: #fff;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 30px;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #000334;
+    width: 0;
+    border-radius: 8px;
+    transition: width 0.3s ease;
+}
+
+body.light-theme .progress-bar-container {
+    background-color: #ddd;
+}
+
+body.light-theme .progress-bar {
+    background-color: green;
+}
+
+body.dark-theme .progress-bar-container {
+    background-color: #333;
+}
+
+body.dark-theme .progress-bar {
+    background-color: green;
+}
+
+.bitcoin-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.bitcoin-info {
+    display: flex;
+    align-items: center;
+}
+
+.bitcoin-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.bitcoin-text {
+    font-size: 1.5em;
+    color: #000;
+    font-weight: bold;
+}
+
+.bitcoin-price-info {
+    text-align: right;
+}
+
+.bitcoin-price {
+    color: #000;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.bitcoin-percentage {
+    display: block;
+    font-size: 1em;
+    color: #000334;
+}
+
+.containery {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.boxy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000334;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Include Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+
+.investment-container {
+    background-color: navy;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.investment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.investment-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.no-investment {
+    font-size: 18px;
+}
+
+.withdrawal-container {
+    background-color: #000;
+    /* Transparent background */
+    border: 2px solid #000334;
+    /* Border to distinguish the div */
+    border-radius: 10px;
+    padding: 20px;;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+.withdrawal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+    /* Text color */
+}
+
+.withdrawal-icon {
+    font-size: 30px;
+    color: #000334;
+    /* Icon color */
+}
+.click-message {
+    font-size: 16px;
+    color: #fff;
+    /* Text color */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container div for Fund via Crypto */
+.funds {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crypto-fund {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #1a1a1a;
+    /* Dark background */
+    border: 2px solid #000334;
+    /* Green border */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Shadow */
+    overflow: hidden;
+    animation: slide-in 1s ease-out;
+    /* Animation */
+    color: #fff;
+    /* White text color */
+}
+
+/* Text at the top left */
+.crypto-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 2rem;
+}
+
+/* Image at the bottom right */
+.crypto-image {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Image styling */
+.crypto-image img {
+    width: 50px;
+    /* Adjust size as needed */
+    height: 50px;
+}
+
+/* Keyframes for slide-in animation */
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.table-container {
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: white;
+    animation: backgroundSwitch 10s infinite;
+}
+
+thead {
+    background-color: #000334;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr {
+    transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.trader-row {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes backgroundSwitch {
+    0% {
+        background-color: #000334;
+    }
+    25% {
+        background-color: navy;
+    }
+    50% {
+        background-color: #000334;
+    }
+    75% {
+        background-color: navy;
+    }
+    100% {
+        background-color: #000;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
+
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    animation: bounceIn 1s ease-in-out;
+}
+
+.login-image {
+    display: none;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-header {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+    color: #fff;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    color: #aaa;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    transition: border-bottom-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom-color: #007BFF;
+}
+
+#toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+}
+
+#toggle-password:hover {
+    color: #fff;
+}
+
+.login-button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+    .login-wrapper {
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .login-image {
+        display: block;
+        flex: 1;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        overflow: hidden;
+    }
+
+    .login-container {
+        flex: 1;
+        padding: 30px;
+    }
+
+    .login-header {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .login-header h1 {
+        margin: 0;
+    }
+}
+.log {
+    height: 5rem;
+    border-radius: 5rem;
+}
